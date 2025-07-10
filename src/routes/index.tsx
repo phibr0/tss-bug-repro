@@ -2,6 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
   component: App,
+  ssr: false,
+  beforeLoad: ({ context }) => {
+    console.log("/", context);
+  },
 });
 
 function App() {

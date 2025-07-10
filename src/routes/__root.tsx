@@ -18,7 +18,16 @@ export const Route = createRootRoute({
       },
     ],
   }),
-
+  beforeLoad: () => {
+    const isClient = typeof window !== "undefined";
+    const isServer = !isClient;
+    const context = {
+      isClient,
+      isServer,
+    };
+    console.log("__root", context);
+    return context;
+  },
   component: () => (
     <RootDocument>
       <Outlet />
